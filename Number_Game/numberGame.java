@@ -8,7 +8,7 @@ public class numberGame{
         int minRange = 1;
         int maxRange = 100;
 
-        int generatedNumber = random.nextInt(maxRange - minRange+1) + maxRange;
+        int generatedNumber = random.nextInt(maxRange - minRange+1) + minRange;
 
         int noOfLives = 5;
 
@@ -23,7 +23,7 @@ public class numberGame{
             int usersGuess = scanner.nextInt();
 
             if (generatedNumber == usersGuess){
-                System.out.println("CONGRADULATIONS! You've Guessed It Correct!");
+                System.out.println("CONGRATULATIONS! You've Guessed It Correct!");
                 break;
             }
             else {
