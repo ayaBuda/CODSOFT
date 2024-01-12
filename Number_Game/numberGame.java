@@ -16,6 +16,16 @@ public class numberGame{
     private int generatedNumber;
     private int noOfLives = 5;
 
+
+    public numberGame(){
+        frame = new JFrame("Number Guessing Game");
+        guessField = new JTextField(10);
+        outputArea = new JTextArea(10, 30);
+        guessButton = new JButton("Guess");
+
+        setupUI();
+        startOfGame();
+    }
      public static void main(String[] args){
        SwingUtilities.invokeLater(new Runnable(){
         @Override
@@ -47,34 +57,42 @@ public class numberGame{
 
     private void startOfGame(){
         Random random = new Random();
-        int generatedNumber = random.nextInt(maxRange - minRange+1) + minRange;
+        generatedNumber = random.nextInt(maxRange - minRange + 1) + minRange;
 
         outputArea.append("WELCOME TO GUESS THE NUMBER!\n");
-        outputArea.append("Try guessing a number between 1 to 100.");
+        outputArea.append("Try guessing a number between 1 to 100.\n");
         outputArea.append("Number of Lives: "+ noOfLives + "\n");
+        System.out.println(generatedNumber);
     }
 
     private void getGuesses(){
         try{
             int usersGuess = Integer.parseInt(guessField.getText());
             if (generatedNumber == usersGuess){
-                System.out.println("CONGRATULATIONS! You've Guessed It Correct!");
+                outputArea.append("CONGRATULATIONS! You've Guessed It Right!\n");
+//                System.out.println("CONGRATULATIONS! You've Guessed It Right!");
                 endGame();
                 }
             else {
                 if(noOfLives == 0){
-                   System.out.println("You Lose. The number was: "+generatedNumber); 
+                    outputArea.append("You Lose. The number was: "+generatedNumber+ "\n");
+//                   System.out.println("You Lose. The number was: "+generatedNumber);
+                   endGame();
                 }
                 // if(generatedNumber != usersGuess){
                 else if (usersGuess > generatedNumber){
-                    System.out.println("Too High. Try again!");
+                    outputArea.append("Too High. Try again!\n");
+//                    System.out.println("Too High. Try again!");
                     noOfLives --;
-                    System.out.println("Lives left: "+ noOfLives);
+                    outputArea.append("Lives left: "+ noOfLives + "\n");
+//                    System.out.println("Lives left: "+ noOfLives);
                 }
                 else if (usersGuess < generatedNumber){
-                    System.out.println("Too Low. Try again!");
+                    outputArea.append("Too Low. Try again!\n");
+//                    System.out.println("Too Low. Try again!");
                     noOfLives --;
-                    System.out.println("Lives left: "+ noOfLives);
+                    outputArea.append("Lives left: "+ noOfLives + "\n");
+//                    System.out.println("Lives left: "+ noOfLives);
                 }
                
                 
