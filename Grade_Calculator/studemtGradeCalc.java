@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class studemtGradeCalc {
-    static int sum = 0;
+    // static int sum = 0;
+    static int averagePercentage;
     static List<Integer> marksArray = new ArrayList<Integer>();
     static List<String> subjects = new ArrayList<String>();
     public static void main(String[] args){
@@ -15,7 +16,7 @@ public class studemtGradeCalc {
 
     }
 
-    public static void getStudentsInput(){
+    public static int getStudentsInput(){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please fill in number of Subjects taken: ");
@@ -23,7 +24,7 @@ public class studemtGradeCalc {
 
         scanner.nextLine();
 
-        for(int x = 0; x <= totalOfSubjects; x++){
+        for(int x = 1; x <= totalOfSubjects; x++){
             System.out.println("Please fill in Subject name: ");
             String subjectName = scanner.nextLine();
             subjects.add(subjectName);
@@ -36,18 +37,29 @@ public class studemtGradeCalc {
             scanner.nextLine();
     }
     scanner.close();
-
+    getAveragePercentage(totalOfSubjects);
+    return totalOfSubjects;
     }
 
-    public static void calculatorAllResults(){
+    public static int calculatorAllResults(){
+        int sum = 0;
+
         for ( int i = 0; i < marksArray.size(); i++){
             sum = sum + marksArray.get(i);
         }
-        System.out.println(sum);
+        System.out.println("this is the calculated sum: " +sum);
+        return sum;
     }
 
+    public static void getAveragePercentage(int totalOfSubjects){
+        
+        // System.out.println(sum);
+        System.out.println("no of sub: "+totalOfSubjects);
+        int sumOfMarks = calculatorAllResults();
 
-
-
+        System.out.println("what is this: "+sumOfMarks);
+        int averagePercentage = (sumOfMarks / totalOfSubjects) * 100;
+        System.out.println("is this the one: "+averagePercentage);
+    }
     
 }
