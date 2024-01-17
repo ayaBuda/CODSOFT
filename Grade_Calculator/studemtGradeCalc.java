@@ -56,17 +56,7 @@ public class studemtGradeCalc {
         return sum;
     }
 
-    
-    public static double calculationTotalPercentage(){
-        double totalPercentage = 0.0;
-        
-        for ( int i = 0; i < marksArray.size(); i++){
-            // double average = (double) marksArray.get(i) / 100 * 100;
-            totalPercentage = totalPercentage + (double) marksArray.get(i) / 100 * 100;
-        }
-        return totalPercentage / marksArray.size();
 
-    }
 
     public static char gradeCalculations(double averagePercentage){
         if (averagePercentage >= 90) {
