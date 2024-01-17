@@ -9,10 +9,6 @@ public class studemtGradeCalc {
     static List<Integer> marksArray = new ArrayList<Integer>();
     static List<String> subjects = new ArrayList<String>();
     public static void main(String[] args){
-        // getStudentsInput();
-        System.out.println(marksArray);
-        System.out.println(subjects);
-        calculatorAllResults();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -51,61 +47,35 @@ public class studemtGradeCalc {
     }
 
 
-    // public static int getStudentsInput(){
-    //     Scanner scanner = new Scanner(System.in);
-
-    //     System.out.println("Please fill in number of Subjects taken: ");
-    //     int totalOfSubjects = scanner.nextInt();
-
-    //     scanner.nextLine();
-
-    //     for(int x = 1; x <= totalOfSubjects; x++){
-    //         System.out.println("Please fill in Subject name: ");
-    //         String subjectName = scanner.nextLine();
-    //         subjects.add(subjectName);
-            
-
-    //         System.out.println("Please enter subject mark out of 100: ");
-    //         int markOutOfHund = scanner.nextInt();
-    //         marksArray.add(markOutOfHund);
-
-    //         scanner.nextLine();
-    // }
-    // scanner.close();
-    // getAveragePercentage(totalOfSubjects);
-    // return totalOfSubjects;
-    // }
-
     public static int calculatorAllResults(){
         int sum = 0;
 
         for ( int i = 0; i < marksArray.size(); i++){
             sum = sum + marksArray.get(i);
         }
-        // System.out.println("this is the calculated sum: " +sum);
         return sum;
     }
 
     
-
-    // public static void getAveragePercentage(int totalOfSubjects){
+    public static double calculationTotalPercentage(){
+        double totalPercentage = 0.0;
         
-    //     int sumOfMarks = calculatorAllResults();
+        for ( int i = 0; i < marksArray.size(); i++){
+            // double average = (double) marksArray.get(i) / 100 * 100;
+            totalPercentage = totalPercentage + (double) marksArray.get(i) / 100 * 100;
+        }
+        return totalPercentage / marksArray.size();
 
-    //     // System.out.println("what is this: "+sumOfMarks);
-    //     int maxMark = totalOfSubjects*100;
-    //     int averagePercentage = (int)((double)sumOfMarks / maxMark * 100);
-    //     System.out.println("Total Average Percentage: "+averagePercentage);
-    // }
+    }
 
     public static char gradeCalculations(double averagePercentage){
         if (averagePercentage >= 90) {
             return 'A';
         } else if (averagePercentage >= 80) {
             return 'B';
-        } else if (averagePercentage >= 70) {
-            return 'C';
         } else if (averagePercentage >= 60) {
+            return 'C';
+        } else if (averagePercentage >= 50) {
             return 'D';
         } else {
             return 'F';
