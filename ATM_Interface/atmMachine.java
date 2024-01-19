@@ -4,7 +4,7 @@ public abstract class atmMachine implements IAtm{
     static double Balance = 100.00;
     static double amount;
     public static void main(String[] args) {
-        amount = withdrawls(amount);
+        // amount = withdrawls(amount);
     }
 
 
