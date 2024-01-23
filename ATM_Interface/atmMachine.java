@@ -1,15 +1,21 @@
 
-public abstract class atmMachine implements IAtm{
+public abstract class AtmMachine implements IAtm{
 
+    protected  UsersAccount usersAccount; 
     static double Balance = 100.00;
     static double amount;
-    public static void main(String[] args) {
-        // amount = withdrawls(amount);
-    }
+    // public static void main(String[] args) {
+    //     atmMachine atm = new atmMachine();
+    //     atm.withdrawls(amount);
+    // }
 
 
-    public atmMachine(){
-        withdrawls(Balance);
+    public AtmMachine(UsersAccount usersAccount){
+        this.usersAccount = usersAccount;
+        withdrawls(30);
+        deposits(20);
+        
+
     }
 
     @Override
@@ -17,6 +23,7 @@ public abstract class atmMachine implements IAtm{
 
         if (amount <= Balance){
             Balance = Balance - amount;
+            System.out.println(Balance);
             System.out.println("Please collect your money.");
             return Balance;
 

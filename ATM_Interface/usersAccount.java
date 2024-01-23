@@ -1,39 +1,38 @@
 
-public class usersAccount extends atmMachine {
+public class UsersAccount{
     private int AccountNumber;
     private int usersPin;
-    private double usersBalance;
+    private double UsersBalance;
+
+    public UsersAccount(int AccountNumber, int usersPin, double initialBalance){
+        this.AccountNumber = AccountNumber;
+        this.usersPin = usersPin;
+        this.UsersBalance = initialBalance;
+    }
 
     public int getAccountNumber(){
         return AccountNumber;
     }
 
-    public int setAccountNumber(){
-        return AccountNumber;
-    }
 
     public int getusersPin(){
         return usersPin;
     }
 
-    public int setusersPin(){
-        return usersPin;
-    }
+    // public int setusersPin(){
+    //     return usersPin;
+    // }
 
 
-    public double getusersBalance(){
-        return usersBalance;
+    public double getUsersBalance(){
+        return UsersBalance;
     }
 
-    public double setusersBalance(){
-        return usersBalance;
+    public void setUsersBalance(double personalBalance){
+        this.UsersBalance = personalBalance;
     }
 
-    @Override
-    public double checkBalance() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'checkBalance'");
-    }
+    
 
 
     
