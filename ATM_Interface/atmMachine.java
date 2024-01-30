@@ -2,7 +2,7 @@
 public abstract class AtmMachine implements IAtm{
 
     protected  UsersAccount usersAccount; 
-    static double Balance = 100.00;
+    static double Balance = 0.00;
     static double amount;
     // public static void main(String[] args) {
     //     atmMachine atm = new atmMachine();
@@ -12,8 +12,8 @@ public abstract class AtmMachine implements IAtm{
 
     public AtmMachine(UsersAccount usersAccount){
         this.usersAccount = usersAccount;
-        withdrawls(30);
-        deposits(20);
+        withdrawls(amount);
+        deposits(amount);
         
 
     }
@@ -25,6 +25,7 @@ public abstract class AtmMachine implements IAtm{
             Balance = Balance - amount;
             System.out.println(Balance);
             System.out.println("Please collect your money.");
+            checkBalance();
             return Balance;
 
         } 
@@ -44,7 +45,22 @@ public abstract class AtmMachine implements IAtm{
             Balance = Balance + amount;
             System.out.println("Your money has been depositted successfully.");
         }
-        System.out.println(Balance);
+        checkBalance();
+        return Balance;
+    }
+
+    
+    @Override
+    public double checkBalance(){
+        System.out.println("Balance: " +Balance);
+        // if( amount < 0){
+        //     System.out.println("Deposit amount must be greater than zero.");
+        // }
+        // else{
+        //     Balance = Balance + amount;
+        //     System.out.println("Your money has been depositted successfully.");
+        // }
+        // System.out.println(Balance);
         return Balance;
     }
 }
