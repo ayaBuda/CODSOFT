@@ -12,9 +12,8 @@ public abstract class AtmMachine implements IAtm{
 
     public AtmMachine(UsersAccount usersAccount){
         this.usersAccount = usersAccount;
-        withdrawls(amount);
-        deposits(amount);
-        
+        // withdrawls(amount);
+        // deposits(amount);  
 
     }
 
@@ -24,13 +23,13 @@ public abstract class AtmMachine implements IAtm{
         if (amount <= Balance){
             Balance = Balance - amount;
             System.out.println(Balance);
-            System.out.println("Please collect your money.");
+            System.out.println("Please collect your money.\n");
             checkBalance();
             return Balance;
 
         } 
         else{
-            System.out.println("Insufficient Funds.");
+            System.out.println("Insufficient Funds.\n");
         }
         System.out.println(Balance);
         return Balance;
@@ -39,11 +38,11 @@ public abstract class AtmMachine implements IAtm{
     @Override
     public double deposits(double amount){
         if( amount < 0){
-            System.out.println("Deposit amount must be greater than zero.");
+            System.out.println("Deposit amount must be greater than zero.\n");
         }
         else{
             Balance = Balance + amount;
-            System.out.println("Your money has been depositted successfully.");
+            System.out.println("Your money has been depositted successfully.\n");
         }
         checkBalance();
         return Balance;
@@ -52,7 +51,7 @@ public abstract class AtmMachine implements IAtm{
     
     @Override
     public double checkBalance(){
-        System.out.println("Balance: " +Balance);
+        System.out.println("Balance: " +Balance+ "\n");
         // if( amount < 0){
         //     System.out.println("Deposit amount must be greater than zero.");
         // }

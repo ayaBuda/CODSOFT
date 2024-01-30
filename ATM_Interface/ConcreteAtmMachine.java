@@ -18,6 +18,8 @@ public class ConcreteAtmMachine extends AtmMachine {
         UsersAccount user = new UsersAccount(acountNumber, userPin,  Balance);
         ConcreteAtmMachine atm = new ConcreteAtmMachine(user);
 
+        while(true){
+
         System.out.println("Please select a number: \n 1. Withdrawal \n 2. Deposit \n 3. Check Balance \n 4. Quit");
         int transaction = scanner.nextInt();
 
@@ -29,19 +31,21 @@ public class ConcreteAtmMachine extends AtmMachine {
                 break;
 
             case 2:
-             System.out.println("Please enter amount: ");
+                System.out.println("Please enter amount: ");
                 double amout = scanner.nextInt(); 
                 atm.deposits(amout);
-                // break;
+                break;
 
             case 3:
                 atm.checkBalance();
-                // break;
-
-            case 4:
                 break;
 
-        }
+            case 4:
+                System.out.println("Goodbye!");
+                System.exit(0);
+                break;
+
+        }}
         // atm.withdrawls(amount);
         
 
