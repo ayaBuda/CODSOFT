@@ -7,6 +7,8 @@ public class ConcreteAtmMachine extends AtmMachine {
 
     public static void main(String[] args) {
 
+        UsersAccount.printUsers();
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter your account number: ");
