@@ -12,6 +12,7 @@ public class ConcreteAtmMachine extends AtmMachine {
         System.out.println("Please enter your account number: ");
         int acountNumber = scanner.nextInt();
 
+        System.out.println("tryna match: "+ UsersAccount.doesAccountExist(acountNumber));
         if(UsersAccount.doesAccountExist(acountNumber)){
 
             System.out.println("Please enter your pin: ");
@@ -19,7 +20,7 @@ public class ConcreteAtmMachine extends AtmMachine {
 
             if(UsersAccount.isPinCorrect(acountNumber, userPin)){
                 
-                UsersAccount user = new UsersAccount(acountNumber, userPin,  UsersAccount.getBalance(acountNumber));
+                UsersAccount user = new UsersAccount();
                 ConcreteAtmMachine atm = new ConcreteAtmMachine(user);
 
                 while(true){
@@ -31,7 +32,7 @@ public class ConcreteAtmMachine extends AtmMachine {
                         case 1:
                             System.out.println("Please enter amount: ");
                             double amount = scanner.nextInt(); 
-                            atm.withdrawls(amount);
+                            atm.withdrawals(amount);
                             break;
 
                         case 2:

@@ -6,29 +6,46 @@ public class UsersAccount{
     private int usersPin;
     private double UsersBalance;
 
-    private static Map<Integer, Integer> accountMatchPin = new HashMap<>(21001, 1234);
-    private static Map<Integer, Double> accountMatchBalance = new HashMap<>();
+    private static Map<Integer, User> usersAccounts ;
 
-    public UsersAccount(int AccountNumber, int usersPin, double initialBalance){
-        this.AccountNumber = AccountNumber;
-        this.usersPin = usersPin;
-        this.UsersBalance = initialBalance;
 
-        accountMatchPin.put(AccountNumber, usersPin);
-        accountMatchBalance.put(AccountNumber, initialBalance);
+    public UsersAccount(){
+        UsersAccount.usersAccounts = new HashMap<>();
+        addUser(21001, 1234, 500.0);
+        addUser(21002, 2468, 800.0);
+        addUser(21003, 36912, 1000.0);
+
+    }
+
+    public User getUserByAccountNumber(int AccountNumber){
+        return usersAccounts.get(AccountNumber);
+    }
+
+    public void addUser(int accountNumber, int userPin, double initialBalance){
+        usersAccounts.put(accountNumber, new User(accountNumber, userPin, initialBalance));
     }
 
     public static boolean doesAccountExist(int AccountNumber){
-        return accountMatchPin.containsKey(AccountNumber);
+        System.out.println("is this the one "+AccountNumber);
+        return usersAccounts.containsKey(AccountNumber);
     }
 
     public static boolean isPinCorrect(int AccountNumber, int enteredPin){
-        return accountMatchPin.get(AccountNumber) == enteredPin;
+        User user = usersAccounts.get(AccountNumber);
+        return user != null && user.getusersPin() == enteredPin;
     }
 
 
     public static double getBalance(int AccountNumber){
-        return accountMatchBalance.get(AccountNumber);
+        User user = usersAccounts.get(AccountNumber);
+        return user != null ? user.getpersonalBalance() : -1;
+    }
+
+    public void updateBalance(int AccountNumber, double newBalance){
+        User user = usersAccounts.get(AccountNumber);
+        if(user != null){
+            user.setpersonalBalance(newBalance);
+        }
     }
 
     public int getAccountNumber(){
