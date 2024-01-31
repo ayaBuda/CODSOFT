@@ -4,16 +4,10 @@ public abstract class AtmMachine implements IAtm{
     protected  UsersAccount usersAccount; 
     static double Balance = 0.00;
     static double amount;
-    // public static void main(String[] args) {
-    //     atmMachine atm = new atmMachine();
-    //     atm.withdrawls(amount);
-    // }
 
 
     public AtmMachine(UsersAccount usersAccount){
-        this.usersAccount = usersAccount;
-        // withdrawls(amount);
-        // deposits(amount);  
+        this.usersAccount = usersAccount; 
 
     }
 
@@ -52,14 +46,6 @@ public abstract class AtmMachine implements IAtm{
     @Override
     public double checkBalance(){
         System.out.println("Balance: " +Balance+ "\n");
-        // if( amount < 0){
-        //     System.out.println("Deposit amount must be greater than zero.");
-        // }
-        // else{
-        //     Balance = Balance + amount;
-        //     System.out.println("Your money has been depositted successfully.");
-        // }
-        // System.out.println(Balance);
         return Balance;
     }
 }

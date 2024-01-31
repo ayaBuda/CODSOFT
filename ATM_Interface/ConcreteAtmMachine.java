@@ -12,48 +12,51 @@ public class ConcreteAtmMachine extends AtmMachine {
         System.out.println("Please enter your account number: ");
         int acountNumber = scanner.nextInt();
 
-        System.out.println("Please enter your pin: ");
-        int userPin = scanner.nextInt();
+        if(UsersAccount.doesAccountExist(acountNumber)){
 
-        UsersAccount user = new UsersAccount(acountNumber, userPin,  Balance);
-        ConcreteAtmMachine atm = new ConcreteAtmMachine(user);
+            System.out.println("Please enter your pin: ");
+            int userPin = scanner.nextInt();
 
-        while(true){
+            if(UsersAccount.isPinCorrect(acountNumber, userPin)){
+                
+                UsersAccount user = new UsersAccount(acountNumber, userPin,  UsersAccount.getBalance(acountNumber));
+                ConcreteAtmMachine atm = new ConcreteAtmMachine(user);
 
-        System.out.println("Please select a number: \n 1. Withdrawal \n 2. Deposit \n 3. Check Balance \n 4. Quit");
-        int transaction = scanner.nextInt();
+                while(true){
 
-        switch(transaction){
-            case 1:
-                System.out.println("Please enter amount: ");
-                double amount = scanner.nextInt(); 
-                atm.withdrawls(amount);
-                break;
+                    System.out.println("Please select a number: \n 1. Withdrawal \n 2. Deposit \n 3. Check Balance \n 4. Quit");
+                    int transaction = scanner.nextInt();
 
-            case 2:
-                System.out.println("Please enter amount: ");
-                double amout = scanner.nextInt(); 
-                atm.deposits(amout);
-                break;
+                    switch(transaction){
+                        case 1:
+                            System.out.println("Please enter amount: ");
+                            double amount = scanner.nextInt(); 
+                            atm.withdrawls(amount);
+                            break;
 
-            case 3:
-                atm.checkBalance();
-                break;
+                        case 2:
+                            System.out.println("Please enter amount: ");
+                            double amout = scanner.nextInt(); 
+                            atm.deposits(amout);
+                            break;
 
-            case 4:
-                System.out.println("Goodbye!");
-                System.exit(0);
-                break;
+                        case 3:
+                            atm.checkBalance();
+                            break;
 
-        }}
-        // atm.withdrawls(amount);
-        
+                        case 4:
+                            System.out.println("Goodbye!");
+                            System.exit(0);
+                            break;
 
+                        }
+                }
+            }else{
+                System.out.println("Incorrect PIN. Exiting...");
+            }
+        }else{
+            System.out.println("Account not found. Exiting...");
+        }
+        scanner.close();
     }
-
-    // @Override
-    // public double checkBalance() {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'checkBalance'");
-    // }
 }
