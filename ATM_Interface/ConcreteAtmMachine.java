@@ -1,28 +1,29 @@
 import java.util.Scanner;
 
-public class ConcreteAtmMachine extends AtmMachine {
-    public ConcreteAtmMachine(UsersAccount user) {
+public class
+ConcreteAtmMachine extends AtmMachine {
+    public ConcreteAtmMachine(User user) {
         super(user);
     }
 
     public static void main(String[] args) {
 
-        UsersAccount.printUsers();
+        AtmMachine.printUsers();
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter your account number: ");
         int acountNumber = scanner.nextInt();
 
-        System.out.println("tryna match: "+ UsersAccount.doesAccountExist(acountNumber));
-        if(UsersAccount.doesAccountExist(acountNumber)){
+        System.out.println("tryna match: "+ AtmMachine.doesAccountExist(acountNumber));
+        if(AtmMachine.doesAccountExist(acountNumber)){
 
             System.out.println("Please enter your pin: ");
             int userPin = scanner.nextInt();
 
-            if(UsersAccount.isPinCorrect(acountNumber, userPin)){
-                
-                UsersAccount user = new UsersAccount();
+            if(AtmMachine.isPinCorrect(acountNumber, userPin)){
+
+                User user = new User(acountNumber, userPin, AtmMachine.getBalance(acountNumber));
                 ConcreteAtmMachine atm = new ConcreteAtmMachine(user);
 
                 while(true){
@@ -33,17 +34,26 @@ public class ConcreteAtmMachine extends AtmMachine {
                     switch(transaction){
                         case 1:
                             System.out.println("Please enter amount: ");
-                            double amount = scanner.nextInt(); 
+                            double amount = scanner.nextInt();
                             atm.withdrawals(amount);
                             break;
 
                         case 2:
                             System.out.println("Please enter amount: ");
-                            double amout = scanner.nextInt(); 
+                            double amout = scanner.nextInt();
                             atm.deposits(amout);
                             break;
 
                         case 3:
+                            double balance = AtmMachine.getBalance(acountNumber);
+
+                            if (balance != -1) {
+                                System.out.println("Your balance is: " + balance);
+                            } else {
+                                System.out.println("Account not found. Please check your account number.");
+                            }
+
+                            atm.setCurrentAccountNo(acountNumber);
                             atm.checkBalance();
                             break;
 
