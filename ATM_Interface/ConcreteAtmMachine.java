@@ -8,14 +8,11 @@ ConcreteAtmMachine extends AtmMachine {
 
     public static void main(String[] args) {
 
-        AtmMachine.printUsers();
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter your account number: ");
         int acountNumber = scanner.nextInt();
 
-        System.out.println("tryna match: "+ AtmMachine.doesAccountExist(acountNumber));
         if(AtmMachine.doesAccountExist(acountNumber)){
 
             System.out.println("Please enter your pin: ");
@@ -47,18 +44,18 @@ ConcreteAtmMachine extends AtmMachine {
                         case 3:
                             double balance = AtmMachine.getBalance(acountNumber);
 
-                            if (balance != -1) {
-                                System.out.println("Your balance is: " + balance);
-                            } else {
-                                System.out.println("Account not found. Please check your account number.");
-                            }
+//                            if (balance != -1) {
+//                                System.out.println("Your balance is: " + balance);
+//                            } else {
+//                                System.out.println("Account not found. Please check your account number.");
+//                            }
 
                             atm.setCurrentAccountNo(acountNumber);
                             atm.checkBalance();
                             break;
 
                         case 4:
-                            System.out.println("Goodbye!");
+                            System.out.println("Thank You! Goodbye!");
                             System.exit(0);
                             break;
 

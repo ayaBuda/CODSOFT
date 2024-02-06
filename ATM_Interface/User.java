@@ -13,7 +13,6 @@ public class User {
     }
 
     public int getAccountNumber(){
-        System.out.println("AccNo. "+accountNumber);
         return accountNumber;
     }
 
@@ -22,7 +21,6 @@ public class User {
     }
 
     public double getpersonalBalance(){
-        System.out.println("2. "+personalBalance);
         return personalBalance;
     }
 

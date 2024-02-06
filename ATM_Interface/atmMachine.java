@@ -15,6 +15,7 @@ public abstract class AtmMachine implements IAtm{
         usersAccounts = new HashMap<>();
         addUser(21001, 1234, 500.0);
         addUser(21002, 5678, 8000.0);
+        addUser(21003, 36912, 0.0);
 
     }
 
@@ -28,7 +29,6 @@ public abstract class AtmMachine implements IAtm{
 
     private static void addUser(int accountNumber, int pin, double balance) {
         User user = new User(accountNumber, pin, balance);
-        System.out.println("does this have something? "+user);
         usersAccounts.put(accountNumber, user);
     }
 
@@ -48,8 +48,6 @@ public abstract class AtmMachine implements IAtm{
 
 
     public static boolean doesAccountExist(int AccountNumber){
-        // System.out.println("Let me seee "+ usersAccounts);
-        // System.out.println("is this the one "+AccountNumber);
         return usersAccounts.containsKey(AccountNumber);
     }
 
@@ -61,15 +59,12 @@ public abstract class AtmMachine implements IAtm{
 
 
     public static double getBalance(int accountNumber) {
-        System.out.println("Account Number to search: " + accountNumber);
+        // System.out.println("Account Number to search: " + accountNumber);
 
         for (Map.Entry<Integer, User> entry : usersAccounts.entrySet()) {
             User user = entry.getValue();
-            System.out.println("AccNo. " + user.getAccountNumber());
 
             if (user.getAccountNumber() == accountNumber) {
-//                System.out.println("User found: " + user);
-//                System.out.println("come onn: " + user.getAccountNumber());
                 return user.getpersonalBalance();
             }
         }
@@ -102,18 +97,17 @@ public abstract class AtmMachine implements IAtm{
 
     public void setCurrentAccountNo(int accountNumber){
         this.currentAccountNo = accountNumber;
-        System.out.println("come onn: "+this.currentAccountNo);
-
     }
 
 
 
 
     public AtmMachine(User user){
-//        this.usersAccount = usersAccount;
         this.user = user;
 
     }
+
+
     @Override
     public double withdrawals(double amount){
         double Balance = getBalance(currentAccountNo);
@@ -121,7 +115,6 @@ public abstract class AtmMachine implements IAtm{
             Balance = Balance - amount;
             updateBalance(currentAccountNo, Balance);
 
-            System.out.println(Balance);
             System.out.println("Please collect your money.\n");
             checkBalance();
             return Balance;
@@ -153,7 +146,7 @@ public abstract class AtmMachine implements IAtm{
     @Override
     public double checkBalance(){
         double balance = getBalance(currentAccountNo);
-        System.out.println("Balance: "+balance);
+        System.out.println("Balance: "+balance+"\n");
         return balance;}
     
 }
