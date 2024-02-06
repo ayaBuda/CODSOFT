@@ -44,12 +44,6 @@ ConcreteAtmMachine extends AtmMachine {
                         case 3:
                             double balance = AtmMachine.getBalance(acountNumber);
 
-//                            if (balance != -1) {
-//                                System.out.println("Your balance is: " + balance);
-//                            } else {
-//                                System.out.println("Account not found. Please check your account number.");
-//                            }
-
                             atm.setCurrentAccountNo(acountNumber);
                             atm.checkBalance();
                             break;

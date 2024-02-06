@@ -3,13 +3,10 @@ import java.util.Map;
 
 public abstract class AtmMachine implements IAtm{
 
-
     protected int currentAccountNo;
     private User user;
 
     private static Map<Integer, User> usersAccounts ;
-
-
 
     static{
         usersAccounts = new HashMap<>();
@@ -18,7 +15,6 @@ public abstract class AtmMachine implements IAtm{
         addUser(21003, 36912, 0.0);
 
     }
-
 
 
     public static Map<Integer, User> getUsersDetails(){
@@ -59,7 +55,6 @@ public abstract class AtmMachine implements IAtm{
 
 
     public static double getBalance(int accountNumber) {
-        // System.out.println("Account Number to search: " + accountNumber);
 
         for (Map.Entry<Integer, User> entry : usersAccounts.entrySet()) {
             User user = entry.getValue();
